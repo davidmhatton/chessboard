@@ -1,6 +1,5 @@
 package models.places;
 
-import java.util.Arrays;
 import java.util.List;
 
 import models.pieces.Piece;

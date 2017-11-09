@@ -12,7 +12,7 @@ public class Rank {
 
 	public Rank(Integer id) {
 		this.id = id;
-		this.even = id % 2 == 1;
+		this.even = id % 2 == 0;
 		this.odd = !this.even;
 	}
 

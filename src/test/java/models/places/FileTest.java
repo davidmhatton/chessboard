@@ -7,7 +7,7 @@ import org.junit.runners.BlockJUnit4ClassRunner;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(BlockJUnit4ClassRunner.class)
-class FileTest {
+public class FileTest {
 
 	@Test
 	public void oddFileIsOdd() throws Exception {
@@ -31,5 +31,12 @@ class FileTest {
 		final File testFile = new File(testId);
 		assertThat(testFile.isEven()).isTrue();
 		assertThat(testFile.isOdd()).isFalse();
+	}
+
+	@Test
+	public void fileContainsSquares() throws Exception {
+		final int testId = 2;
+		final File testFile = new File(testId);
+		assertThat(testFile.getSquareList()).hasAtLeastOneElementOfType(Square.class);
 	}
 }
