@@ -1,6 +1,5 @@
 package models.places;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,12 +13,11 @@ public class File {
 	private Integer id;
 	private List<Square> squareList;
 
-	public File(Integer id) {
+	public File(Integer id, List<Square> squareList) {
 		this.id = id;
 		this.even = id % 2 == 0;
 		this.odd = !this.even;
-		this.squareList = new ArrayList<>();
-		for (int i = 0; i < 8; i++) this.squareList.add(new Square(id, i));
+		this.squareList = squareList;
 	}
 
 	public boolean isOdd() {
