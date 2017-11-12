@@ -8,36 +8,38 @@ import static assets.TestAssets.TEST_SQUARE_LIST;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(BlockJUnit4ClassRunner.class)
-public class FileTest {
+public class RankTest {
 
 	@Test
-	public void oddFileIsOdd() throws Exception {
+	public void oddRankIsOdd() throws Exception {
 		final int testId = 1;
-		final File testFile = new File(testId, TEST_SQUARE_LIST);
+		final Rank testFile = new Rank(testId, TEST_SQUARE_LIST);
 		assertThat(testFile.isOdd()).isTrue();
 		assertThat(testFile.isEven()).isFalse();
 	}
 
 	@Test
-	public void evenFileIsEven() throws Exception {
+	public void evenRankIsEven() throws Exception {
 		final int testId = 2;
-		final File testFile = new File(testId, TEST_SQUARE_LIST);
+		final Rank testFile = new Rank(testId, TEST_SQUARE_LIST);
 		assertThat(testFile.isEven()).isTrue();
 		assertThat(testFile.isOdd()).isFalse();
 	}
 
 	@Test
-	public void zeroFileIsEven() throws Exception {
+	public void zeroRankIsEven() throws Exception {
 		final int testId = 2;
-		final File testFile = new File(testId, TEST_SQUARE_LIST);
+		final Rank testFile = new Rank(testId, TEST_SQUARE_LIST);
 		assertThat(testFile.isEven()).isTrue();
 		assertThat(testFile.isOdd()).isFalse();
 	}
 
 	@Test
-	public void fileContainsSquares() throws Exception {
+	public void rankContainsSquares() throws Exception {
 		final int testId = 2;
-		final File testFile = new File(testId, TEST_SQUARE_LIST);
+		final Rank testFile = new Rank(testId, TEST_SQUARE_LIST);
 		assertThat(testFile.getSquareList()).hasAtLeastOneElementOfType(Square.class);
 	}
+
+
 }

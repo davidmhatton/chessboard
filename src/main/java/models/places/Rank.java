@@ -31,4 +31,8 @@ public class Rank {
 	public Integer getId() {
 		return id;
 	}
+
+	public List<Square> getSquareList() {
+		return squareList;
+	}
 }
