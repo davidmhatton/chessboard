@@ -8,7 +8,7 @@ import models.places.Square;
 /**
  * Assets for use in tests.
  *
- * @author David Hatton (dhatton@turnitin.com)
+ * @author David Hatton
  */
 public abstract class TestAssets {
 

@@ -8,22 +8,27 @@ import enums.Color;
  * @author David Hatton
  */
 public class Square {
-	private Integer id;
-	private Integer fileId;
-	private Integer rankId;
+	private int id;
+	private int fileId;
+	private int rankId;
 	private Color color;
 
 	public Square(Integer file, Integer rank) {
 		this.fileId = file;
 		this.rankId = rank;
 		this.id = (8 * rankId) + fileId;
-		determineColor();
+		if ((file % 2 == 1 && rank % 2 == 0) || (file % 2 == 0 && rank % 2 == 1)) {
+			this.color = Color.WHITE;
+		} else {
+			this.color = Color.BLACK;
+		}
 	}
 
 	public Square(Integer id) {
 		this.id = id;
 		this.fileId = id % 8;
 		this.rankId = (id - this.fileId) / 8;
+		determineColor();
 	}
 
 	private void determineColor() {
@@ -34,15 +39,15 @@ public class Square {
 		}
 	}
 
-	public Integer getId() {
+	public int getId() {
 		return id;
 	}
 
-	public Integer getFileId() {
+	public int getFileId() {
 		return fileId;
 	}
 
-	public Integer getRankId() {
+	public int getRankId() {
 		return rankId;
 	}
 
