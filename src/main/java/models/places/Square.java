@@ -8,20 +8,16 @@ import enums.Color;
  * @author David Hatton
  */
 public class Square {
-	private int id;
-	private int fileId;
-	private int rankId;
+	private Integer id;
+	private Integer fileId;
+	private Integer rankId;
 	private Color color;
 
 	public Square(Integer file, Integer rank) {
 		this.fileId = file;
 		this.rankId = rank;
 		this.id = (8 * rankId) + fileId;
-		if ((file % 2 == 1 && rank % 2 == 0) || (file % 2 == 0 && rank % 2 == 1)) {
-			this.color = Color.WHITE;
-		} else {
-			this.color = Color.BLACK;
-		}
+		determineColor();
 	}
 
 	public Square(Integer id) {
