@@ -3,7 +3,8 @@ package enums;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * Description.
+ * Represents colours.
+ * Eventual plan to substitute word keys for colour codes when a front end requires it.
  *
  * @author David Hatton
  */
