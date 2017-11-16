@@ -2,7 +2,7 @@ machine:
   java:
     version: openjdk8
 
-  dependencies:
-    override:
-      - gradle dependencies
-      - gradle test
+dependencies:
+  override:
+    - gradle dependencies
+    - gradle test
