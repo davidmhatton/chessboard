@@ -13,7 +13,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * Test package for squares.
- * NERD!
  *
  * @author David Hatton
  */
