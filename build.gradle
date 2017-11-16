@@ -1,0 +1,39 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.8.RELEASE")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+
+jar {
+    baseName = 'gs-rest-service'
+    version =  '0.1.0'
+}
+
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web")
+
+    // Spring Boot doesn't yet include AssertJ 3.8.0.
+    testCompile("org.springframework.boot:spring-boot-starter-test") {
+        exclude group: "org.assertj"
+    }
+    testCompile("org.assertj:assertj-core:3.8.0")
+    testCompile("net.codebox:javabean-tester:1.0.0")
+    testCompile("org.powermock:powermock-api-mockito:1.7.0")
+    testCompile("org.powermock:powermock-module-junit4:1.7.0")
+    testCompile("commons-io:commons-io:2.5");
+}
