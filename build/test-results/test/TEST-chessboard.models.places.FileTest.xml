@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="chessboard.models.places.FileTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2017-11-20T13:25:38" hostname="UKM0417259B1" time="0.014">
+  <properties/>
+  <testcase name="zeroFileIsEven" classname="chessboard.models.places.FileTest" time="0.001"/>
+  <testcase name="rankContainsFourBlackSquares" classname="chessboard.models.places.FileTest" time="0.0"/>
+  <testcase name="evenFileIsEven" classname="chessboard.models.places.FileTest" time="0.0"/>
+  <testcase name="fileContainsSquares" classname="chessboard.models.places.FileTest" time="0.011"/>
+  <testcase name="rankContainsFourWhiteSquares" classname="chessboard.models.places.FileTest" time="0.0"/>
+  <testcase name="oddFileIsOdd" classname="chessboard.models.places.FileTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
