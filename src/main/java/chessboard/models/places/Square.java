@@ -1,6 +1,7 @@
 package chessboard.models.places;
 
 import chessboard.enums.Color;
+import chessboard.models.pieces.Piece;
 
 /**
  * A square on a chess board.
@@ -12,11 +13,13 @@ public class Square {
 	private Integer fileId;
 	private Integer rankId;
 	private Color color;
+	private Piece piece;
 
 	public Square(Integer file, Integer rank) {
 		this.fileId = file;
 		this.rankId = rank;
 		this.id = (8 * rankId) + fileId;
+		this.piece = null;
 		determineColor();
 	}
 
@@ -24,6 +27,7 @@ public class Square {
 		this.id = id;
 		this.fileId = id % 8;
 		this.rankId = (id - this.fileId) / 8;
+		this.piece = null;
 		determineColor();
 	}
 
@@ -49,5 +53,13 @@ public class Square {
 
 	public Color getColor() {
 		return color;
+	}
+
+	public Piece getPiece() {
+		return piece;
+	}
+
+	public void setPiece(Piece piece) {
+		this.piece = piece;
 	}
 }
