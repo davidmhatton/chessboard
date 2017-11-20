@@ -1,4 +1,4 @@
-package models.places;
+package chessboard.models.places;
 
 import java.util.List;
 

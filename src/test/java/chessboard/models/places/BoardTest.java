@@ -1,4 +1,4 @@
-package models.places;
+package chessboard.models.places;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +8,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.BlockJUnit4ClassRunner;
 
-import enums.Color;
+import chessboard.enums.Color;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

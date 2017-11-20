@@ -1,9 +1,9 @@
-package models.places;
+package chessboard.models.places;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import models.pieces.Piece;
+import chessboard.models.pieces.Piece;
 
 /**
  * The board as a whole.

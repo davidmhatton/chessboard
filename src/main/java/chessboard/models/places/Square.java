@@ -1,6 +1,6 @@
-package models.places;
+package chessboard.models.places;
 
-import enums.Color;
+import chessboard.enums.Color;
 
 /**
  * A square on a chess board.

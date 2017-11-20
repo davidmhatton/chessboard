@@ -1,10 +1,10 @@
-package models.places;
+package chessboard.models.places;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.BlockJUnit4ClassRunner;
 
-import enums.Color;
+import chessboard.enums.Color;
 
 import static assets.TestAssets.TEST_SQUARE_LIST_RANK;
 import static org.assertj.core.api.Assertions.assertThat;

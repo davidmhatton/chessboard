@@ -1,6 +1,6 @@
-package models.pieces;
+package chessboard.models.pieces;
 
-import models.places.Square;
+import chessboard.models.places.Square;
 
 /**
  * Master piece.

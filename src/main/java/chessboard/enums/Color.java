@@ -1,4 +1,4 @@
-package enums;
+package chessboard.enums;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 

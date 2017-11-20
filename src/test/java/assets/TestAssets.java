@@ -3,7 +3,7 @@ package assets;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import models.places.Square;
+import chessboard.models.places.Square;
 
 /**
  * Assets for use in tests.
