@@ -1,6 +1,8 @@
 package chessboard.models.places;
 
 import chessboard.enums.Color;
+import chessboard.exceptions.NoPieceException;
+import chessboard.exceptions.OutOfBoundsException;
 import chessboard.models.pieces.Piece;
 
 /**
@@ -61,5 +63,30 @@ public class Square {
 
 	public void setPiece(Piece piece) {
 		this.piece = piece;
+	}
+
+	private boolean idWithinBounds(int id) {
+		return id >= 0 && id <= 63;
+	}
+
+	public int ahead(int distance) throws NoPieceException, OutOfBoundsException {
+		int destination;
+		switch (piece.getColor()) {
+			case WHITE:
+				destination = id + (8 * distance);
+				break;
+			case BLACK:
+				destination = id - (8 * distance);
+				break;
+
+			default:
+				throw new NoPieceException(this);
+		}
+
+		if (!idWithinBounds(destination)) {
+			throw new OutOfBoundsException(destination);
+		}
+
+		return destination;
 	}
 }

@@ -5,6 +5,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.BlockJUnit4ClassRunner;
 
 import chessboard.enums.Color;
+import chessboard.models.pieces.Pawn;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -42,5 +43,63 @@ public class SquareTest {
 	public void oddSquareSecondRankCreatesWithIdHasCorrectColor() throws Exception {
 		final Square oddSquare = new Square(17);
 		assertThat(oddSquare.getColor()).isEqualTo(Color.WHITE);
+	}
+
+	@Test
+	public void aheadDefinedForWhite() throws Exception {
+		final Square square = new Square(27);
+		final Pawn testPiece = new Pawn(false, false, square, Color.WHITE);
+
+		square.setPiece(testPiece);
+		assertThat(square.ahead(1)).isEqualTo(35);
+	}
+
+	@Test
+	public void aheadDefinedForBlack() throws Exception {
+		final Square square = new Square(27);
+		final Pawn testPiece = new Pawn(false, false, square, Color.BLACK);
+
+		square.setPiece(testPiece);
+		assertThat(square.ahead(1)).isEqualTo(19);
+	}
+
+	@Test
+	public void behindDefinedForWhite() throws Exception {
+
+	}
+
+	@Test
+	public void behindDefinedForBlack() throws Exception {
+
+	}
+
+	@Test
+	public void AWardDefined() throws Exception {
+
+	}
+
+	@Test
+	public void HWardDefined() throws Exception {
+
+	}
+
+	@Test
+	public void DiagonalDefinedAheadA() throws Exception {
+
+	}
+
+	@Test
+	public void DiagonalDefinedAheadH() throws Exception {
+
+	}
+
+	@Test
+	public void DiagonalDefinedBehindA() throws Exception {
+
+	}
+
+	@Test
+	public void DiagonalDefinedBehindH() throws Exception {
+
 	}
 }
