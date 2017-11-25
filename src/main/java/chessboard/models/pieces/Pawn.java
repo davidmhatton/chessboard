@@ -12,6 +12,7 @@ public class Pawn extends Piece {
 
 	private boolean firstMove;
 	private boolean enPassentReady;
+	private int range;
 
 	public Pawn() {
 		super();
@@ -20,12 +21,14 @@ public class Pawn extends Piece {
 	public Pawn(boolean taken, boolean pinned, Square location, Color color) {
 		super("Pawn", "P", taken, pinned, location, color);
 		this.firstMove = true;
+		setRange();
 	}
 
-	public Pawn(String name, String letter, boolean taken, boolean pinned, Square location, Color color, boolean firstMove, boolean enPassentReady) {
-		super(name, letter, taken, pinned, location, color);
+	public Pawn(boolean taken, boolean pinned, Square location, Color color, boolean firstMove, boolean enPassentReady) {
+		super("Pawn", "P", taken, pinned, location, color);
 		this.firstMove = firstMove;
 		this.enPassentReady = enPassentReady;
+		setRange();
 	}
 
 	public boolean isFirstMove() {
@@ -44,6 +47,14 @@ public class Pawn extends Piece {
 		this.enPassentReady = enPassentReady;
 	}
 
+	public int getRange() {
+		return range;
+	}
+
+	public void setRange() {
+		this.range = isFirstMove() ? 2 : 1;
+	}
+
 	public boolean legalMove(Square destination) {
 		if (getColor() == Color.WHITE) {
 			return legalMoveWhite(destination);
@@ -57,6 +68,10 @@ public class Pawn extends Piece {
 
 		if (destination.getFileId() == getLocation().getFileId()) {
 			if (destinationOccupiedBy != null) {
+				return false;
+			}
+
+			if (destination.getRankId() > getLocation().getRankId() + getRange()) {
 				return false;
 			}
 		}
