@@ -62,44 +62,4 @@ public class SquareTest {
 		square.setPiece(testPiece);
 		assertThat(square.ahead(1)).isEqualTo(19);
 	}
-
-	@Test
-	public void behindDefinedForWhite() throws Exception {
-
-	}
-
-	@Test
-	public void behindDefinedForBlack() throws Exception {
-
-	}
-
-	@Test
-	public void AWardDefined() throws Exception {
-
-	}
-
-	@Test
-	public void HWardDefined() throws Exception {
-
-	}
-
-	@Test
-	public void DiagonalDefinedAheadA() throws Exception {
-
-	}
-
-	@Test
-	public void DiagonalDefinedAheadH() throws Exception {
-
-	}
-
-	@Test
-	public void DiagonalDefinedBehindA() throws Exception {
-
-	}
-
-	@Test
-	public void DiagonalDefinedBehindH() throws Exception {
-
-	}
 }
