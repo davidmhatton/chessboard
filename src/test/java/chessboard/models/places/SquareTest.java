@@ -44,22 +44,4 @@ public class SquareTest {
 		final Square oddSquare = new Square(17);
 		assertThat(oddSquare.getColor()).isEqualTo(Color.WHITE);
 	}
-
-	@Test
-	public void aheadDefinedForWhite() throws Exception {
-		final Square square = new Square(27);
-		final Pawn testPiece = new Pawn(false, false, square, Color.WHITE);
-
-		square.setPiece(testPiece);
-		assertThat(square.ahead(1)).isEqualTo(35);
-	}
-
-	@Test
-	public void aheadDefinedForBlack() throws Exception {
-		final Square square = new Square(27);
-		final Pawn testPiece = new Pawn(false, false, square, Color.BLACK);
-
-		square.setPiece(testPiece);
-		assertThat(square.ahead(1)).isEqualTo(19);
-	}
 }
