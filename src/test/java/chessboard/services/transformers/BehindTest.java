@@ -9,39 +9,38 @@ import chessboard.exceptions.NoPieceException;
 import chessboard.models.pieces.Pawn;
 import chessboard.models.places.Square;
 
-import static chessboard.services.transformers.Ahead.ahead;
+import static chessboard.services.transformers.Behind.behind;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 /**
- * Test suite for ahead.
+ * Test package for Behind.
  *
  * @author David Hatton (dhatton@turnitin.com)
  */
 @RunWith(BlockJUnit4ClassRunner.class)
-public class AheadTest extends Transformer {
-
+public class BehindTest {
 	@Test
-	public void aheadDefinedForWhite() throws Exception {
+	public void behindDefinedForWhite() throws Exception {
 		final Square square = new Square(27);
 		final Pawn testPiece = new Pawn(false, false, square, Color.WHITE);
 
 		square.setPiece(testPiece);
-		assertThat(ahead(square, 1)).isEqualTo(35);
+		assertThat(behind(square, 1)).isEqualTo(19);
 	}
 
 	@Test
-	public void aheadDefinedForBlack() throws Exception {
+	public void behindDefinedForBlack() throws Exception {
 		final Square square = new Square(27);
 		final Pawn testPiece = new Pawn(false, false, square, Color.BLACK);
 
 		square.setPiece(testPiece);
-		assertThat(ahead(square, 1)).isEqualTo(19);
+		assertThat(behind(square, 1)).isEqualTo(35);
 	}
 
 	@Test
-	public void callOnEmptySquareThrowsNoPieceException(){
+	public void callOnEmptySquareThrowsNoPieceException() {
 		final Square square = new Square(27);
-		assertThatThrownBy(() -> ahead(square, 1)).isInstanceOf(NoPieceException.class);
+		assertThatThrownBy(() -> behind(square, 1)).isInstanceOf(NoPieceException.class);
 	}
 }
