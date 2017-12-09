@@ -7,6 +7,7 @@ import org.junit.runners.BlockJUnit4ClassRunner;
 
 import chessboard.enums.Direction;
 import chessboard.exceptions.OutOfBoundsException;
+import chessboard.exceptions.WrongDirectionException;
 import chessboard.services.helpers.Coordinate;
 
 import static chessboard.services.transformers.Lateral.lateral;
@@ -52,5 +53,11 @@ public class LateralTest {
 	public void tooFarTowardHThrowsOutOfBoundsException() {
 		assertThatThrownBy(() -> lateral(originCoordinate, 6, Direction.H))
 				.isInstanceOf(OutOfBoundsException.class);
+	}
+
+	@Test
+	public void passingBadDirectionThrowsWrongDirectionException() {
+		assertThatThrownBy(() -> lateral(originCoordinate, 2, Direction.UP))
+				.isInstanceOf(WrongDirectionException.class);
 	}
 }

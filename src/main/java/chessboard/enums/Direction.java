@@ -3,7 +3,7 @@ package chessboard.enums;
 /**
  * Directions on the chess board, both absolute and relative to player.
  *
- * @author David Hatton (dhatton@turnitin.com)
+ * @author David Hatton
  */
 public enum Direction {
 
@@ -29,5 +29,9 @@ public enum Direction {
 
 	Direction(String direction) {
 		this.direction = direction;
+	}
+
+	public String getDirection() {
+		return direction;
 	}
 }
