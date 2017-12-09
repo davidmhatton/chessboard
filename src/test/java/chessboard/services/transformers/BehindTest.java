@@ -23,7 +23,8 @@ public class BehindTest {
 	@Test
 	public void behindDefinedForWhite() throws Exception {
 		final Square square = new Square(27);
-		final Pawn testPiece = new Pawn(false, false, square, Color.WHITE);
+		final int originId = 27;
+		final Pawn testPiece = new Pawn(false, false, originId, Color.WHITE);
 
 		square.setPiece(testPiece);
 		assertThat(behind(square, 1)).isEqualTo(19);
@@ -32,7 +33,8 @@ public class BehindTest {
 	@Test
 	public void behindDefinedForBlack() throws Exception {
 		final Square square = new Square(27);
-		final Pawn testPiece = new Pawn(false, false, square, Color.BLACK);
+		final int originId = 27;
+		final Pawn testPiece = new Pawn(false, false, originId, Color.BLACK);
 
 		square.setPiece(testPiece);
 		assertThat(behind(square, 1)).isEqualTo(35);
