@@ -1,7 +1,6 @@
 package chessboard.models.pieces;
 
 import chessboard.enums.Color;
-import chessboard.models.places.Square;
 
 /**
  * Master piece.
@@ -14,13 +13,13 @@ public class Piece {
 	private String letter;
 	private boolean taken;
 	private boolean pinned;
-	private Square location;
+	private int location;
 	private Color color;
 
 	public Piece() {
 	}
 
-	public Piece(String name, String letter, boolean taken, boolean pinned, Square location, Color color) {
+	public Piece(String name, String letter, boolean taken, boolean pinned, int location, Color color) {
 		this.name = name;
 		this.letter = letter;
 		this.taken = taken;
@@ -53,11 +52,11 @@ public class Piece {
 		this.pinned = pinned;
 	}
 
-	public Square getLocation() {
+	public int getLocation() {
 		return location;
 	}
 
-	public void setLocation(Square location) {
+	public void setLocation(int location) {
 		this.location = location;
 	}
 
