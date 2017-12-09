@@ -1,11 +1,9 @@
 package chessboard.services.transformers;
 
 
+import chessboard.enums.Direction;
 import chessboard.exceptions.OutOfBoundsException;
-import chessboard.models.places.Square;
 import chessboard.services.helpers.Coordinate;
-
-import static chessboard.services.helpers.IdTranslator.coordinateToId;
 
 /**
  * Lateral movement methods.
@@ -14,30 +12,24 @@ import static chessboard.services.helpers.IdTranslator.coordinateToId;
  */
 public abstract class Lateral extends Transformer {
 
-	private static Coordinate lateral(Square origin, int distance) {
-		final Coordinate coordinate = new Coordinate(origin.getFileId(), origin.getRankId());
-		coordinate.setFileId(coordinate.getFileId() - distance);
-
-		return coordinate;
-
-	}
-
-	public static int lateralA(Square origin, int distance) throws OutOfBoundsException {
-		Coordinate newCoordinate = lateral(origin, distance);
-
-		if (coordinateOutOfBounds(newCoordinate)) {
-			throw new OutOfBoundsException(newCoordinate);
-		} else {
-			return coordinateToId(newCoordinate);
+	/**
+	 * Lateral transformer.
+	 *
+	 * @param coordinate coordinates that are to be transformed.
+	 * @param distance how far to move.
+	 * @param direction the direction in which to move.
+	 * @return coordinate of destination square.
+	 */
+	public static Coordinate lateral(Coordinate coordinate, int distance, Direction direction) throws OutOfBoundsException {
+		if (direction == Direction.A) {
+			distance = -distance;
 		}
-	}
+		coordinate.setFileId(coordinate.getFileId() + distance);
 
-	public static int lateralH(Square origin, int distance) throws OutOfBoundsException {
-		Coordinate newCoordinate = lateral(origin, -distance);
-		if (coordinateOutOfBounds(newCoordinate)) {
-			throw new OutOfBoundsException(newCoordinate);
+		if (coordinateOutOfBounds(coordinate)) {
+			throw new OutOfBoundsException(coordinate);
 		} else {
-			return coordinateToId(newCoordinate);
+			return coordinate;
 		}
 	}
 }

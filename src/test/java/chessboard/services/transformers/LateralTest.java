@@ -1,14 +1,15 @@
 package chessboard.services.transformers;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.BlockJUnit4ClassRunner;
 
+import chessboard.enums.Direction;
 import chessboard.exceptions.OutOfBoundsException;
-import chessboard.models.places.Square;
+import chessboard.services.helpers.Coordinate;
 
-import static chessboard.services.transformers.Lateral.lateralA;
-import static chessboard.services.transformers.Lateral.lateralH;
+import static chessboard.services.transformers.Lateral.lateral;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -20,25 +21,36 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 @RunWith(BlockJUnit4ClassRunner.class)
 public class LateralTest {
 
-	private static final Square ORIGIN = new Square(27);
+	private Coordinate originCoordinate;
 
-	@Test
-	public void lateralDefinedTowardA() throws Exception {
-		assertThat(lateralA(ORIGIN, 2)).isEqualTo(25);
+	@Before
+	public void setUp() {
+		originCoordinate = new Coordinate(3,4);
 	}
 
 	@Test
-	public void lateralDefinedTowardH() throws Exception {
-		assertThat(lateralH(ORIGIN, 2)).isEqualTo(29);
+	public void lateralWorksForA() throws Exception {
+		Coordinate transformedCoordinate = lateral(originCoordinate, 2, Direction.A);
+		assertThat(transformedCoordinate.getFileId()).isEqualTo(1);
+		assertThat(transformedCoordinate.getRankId()).isEqualTo(4);
+	}
+
+	@Test
+	public void lateralWorksForH() throws Exception {
+		Coordinate transformedCoordinate = lateral(originCoordinate, 2, Direction.H);
+		assertThat(transformedCoordinate.getFileId()).isEqualTo(5);
+		assertThat(transformedCoordinate.getRankId()).isEqualTo(4);
 	}
 
 	@Test
 	public void tooFarTowardAThrowsOutOfBoundsException() {
-		assertThatThrownBy(() -> lateralA(ORIGIN, 6)).isInstanceOf(OutOfBoundsException.class);
+		assertThatThrownBy(() -> lateral(originCoordinate, 6, Direction.A))
+				.isInstanceOf(OutOfBoundsException.class);
 	}
 
 	@Test
 	public void tooFarTowardHThrowsOutOfBoundsException() {
-		assertThatThrownBy(() -> lateralH(ORIGIN, 6)).isInstanceOf(OutOfBoundsException.class);
+		assertThatThrownBy(() -> lateral(originCoordinate, 6, Direction.H))
+				.isInstanceOf(OutOfBoundsException.class);
 	}
 }
