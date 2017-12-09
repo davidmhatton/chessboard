@@ -21,10 +21,12 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 @RunWith(BlockJUnit4ClassRunner.class)
 public class AheadTest extends Transformer {
 
+	private static final int ORIGIN = 27;
+
 	@Test
 	public void aheadDefinedForWhite() throws Exception {
 		final Square square = new Square(27);
-		final Pawn testPiece = new Pawn(false, false, square, Color.WHITE);
+		final Pawn testPiece = new Pawn(false, false, ORIGIN, Color.WHITE);
 
 		square.setPiece(testPiece);
 		assertThat(ahead(square, 1)).isEqualTo(35);
@@ -33,7 +35,7 @@ public class AheadTest extends Transformer {
 	@Test
 	public void aheadDefinedForBlack() throws Exception {
 		final Square square = new Square(27);
-		final Pawn testPiece = new Pawn(false, false, square, Color.BLACK);
+		final Pawn testPiece = new Pawn(false, false, ORIGIN, Color.BLACK);
 
 		square.setPiece(testPiece);
 		assertThat(ahead(square, 1)).isEqualTo(19);
@@ -41,7 +43,7 @@ public class AheadTest extends Transformer {
 
 	@Test
 	public void callOnEmptySquareThrowsNoPieceException(){
-		final Square square = new Square(27);
+		final Square square = new Square(ORIGIN);
 		assertThatThrownBy(() -> ahead(square, 1)).isInstanceOf(NoPieceException.class);
 	}
 }

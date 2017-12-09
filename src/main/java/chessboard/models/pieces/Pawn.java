@@ -2,6 +2,9 @@ package chessboard.models.pieces;
 
 import chessboard.enums.Color;
 import chessboard.models.places.Square;
+import chessboard.services.helpers.Coordinate;
+
+import static chessboard.services.helpers.IdTranslator.idToCoordinate;
 
 /**
  * A pawn.
@@ -18,13 +21,13 @@ public class Pawn extends Piece {
 		super();
 	}
 
-	public Pawn(boolean taken, boolean pinned, Square location, Color color) {
+	public Pawn(boolean taken, boolean pinned, int location, Color color) {
 		super("Pawn", "P", taken, pinned, location, color);
 		this.firstMove = true;
 		setRange();
 	}
 
-	public Pawn(boolean taken, boolean pinned, Square location, Color color, boolean firstMove, boolean enPassentReady) {
+	public Pawn(boolean taken, boolean pinned, int location, Color color, boolean firstMove, boolean enPassentReady) {
 		super("Pawn", "P", taken, pinned, location, color);
 		this.firstMove = firstMove;
 		this.enPassentReady = enPassentReady;
@@ -64,14 +67,17 @@ public class Pawn extends Piece {
 	}
 
 	private boolean legalMoveWhite(Square destination) {
+		final Coordinate location = idToCoordinate(getLocation());
+		final int locationFileId = location.getFileId();
+		final int locationRankId = location.getRankId();
 		Piece destinationOccupiedBy = destination.getPiece();
 
-		if (destination.getFileId() == getLocation().getFileId()) {
+		if (destination.getFileId() == locationFileId) {
 			if (destinationOccupiedBy != null) {
 				return false;
 			}
 
-			if (destination.getRankId() > getLocation().getRankId() + getRange()) {
+			if (destination.getRankId() > locationRankId + getRange()) {
 				return false;
 			}
 		}

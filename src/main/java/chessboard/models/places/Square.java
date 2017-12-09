@@ -1,9 +1,11 @@
 package chessboard.models.places;
 
 import chessboard.enums.Color;
-import chessboard.exceptions.NoPieceException;
-import chessboard.exceptions.OutOfBoundsException;
 import chessboard.models.pieces.Piece;
+import chessboard.services.helpers.Coordinate;
+
+import static chessboard.services.helpers.IdTranslator.coordinateToId;
+import static chessboard.services.helpers.IdTranslator.idToCoordinate;
 
 /**
  * A square on a chess board.
@@ -17,18 +19,20 @@ public class Square {
 	private Color color;
 	private Piece piece;
 
-	public Square(Integer file, Integer rank) {
-		this.fileId = file;
-		this.rankId = rank;
-		this.id = (8 * rankId) + fileId;
+	public Square(Coordinate coordinate) {
+		this.fileId = coordinate.getFileId();
+		this.rankId = coordinate.getRankId();
+		this.id = coordinateToId(coordinate);
 		this.piece = null;
 		determineColor();
 	}
 
 	public Square(Integer id) {
+		final Coordinate coordinate = idToCoordinate(id);
+
 		this.id = id;
-		this.fileId = id % 8;
-		this.rankId = (id - this.fileId) / 8;
+		this.fileId = coordinate.getFileId();
+		this.rankId = coordinate.getRankId();
 		this.piece = null;
 		determineColor();
 	}
