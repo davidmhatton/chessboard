@@ -24,49 +24,49 @@ public abstract class Vertical extends Transformer {
 	public static Coordinate vertical(Coordinate coordinate, int distance, Direction direction, Piece piece)
 			throws NoPieceException, OutOfBoundsException, WrongDirectionException {
 
+		Coordinate destinationCoordinate = null;
+
+		if (direction == Direction.A || direction == Direction.H) {
+			throw new WrongDirectionException(direction);
+		}
+		if ((direction == Direction.AHEAD || direction == Direction.BEHIND) && piece == null) {
+			throw new NoPieceException(new Square(coordinate));
+		}
+
 		switch (direction) {
 			case UP:
-				return up(coordinate, distance);
-
+				destinationCoordinate = up(coordinate, distance);
+				break;
 			case DOWN:
-				return up(coordinate, -distance);
-
+				destinationCoordinate = up(coordinate, -distance);
+				break;
 			case AHEAD:
-				if (piece != null) {
-					if (piece.getColor() == Color.WHITE) {
-						return up(coordinate, distance);
-					} else {
-						return up(coordinate, -distance);
-					}
+				if (piece.getColor() == Color.WHITE) {
+					destinationCoordinate = up(coordinate, distance);
 				} else {
-					throw new NoPieceException(new Square(coordinate));
+					destinationCoordinate = up(coordinate, -distance);
 				}
 				break;
-
 			case BEHIND:
-				if (piece != null) {
-					if (piece.getColor() == Color.WHITE) {
-						return up(coordinate, -distance);
-					} else {
-						return up(coordinate, distance);
-					}
+				if (piece.getColor() == Color.WHITE) {
+					destinationCoordinate = up(coordinate, -distance);
 				} else {
-					throw new NoPieceException(new Square(coordinate));
+					destinationCoordinate = up(coordinate, distance);
 				}
 				break;
-
-			case H:
-			case A:
-				throw new WrongDirectionException(direction);
 		}
+
+		return destinationCoordinate;
 	}
 
 	private static Coordinate up(Coordinate coordinate, int distance) throws OutOfBoundsException {
-		coordinate.setFileId(coordinate.getFileId() + distance);
-		if (coordinateOutOfBounds(coordinate)) {
-			throw new OutOfBoundsException(coordinate);
+		Coordinate destinationCoordinate = new Coordinate(coordinate.getFileId(), coordinate.getRankId());
+
+		destinationCoordinate.setRankId(coordinate.getRankId() + distance);
+		if (coordinateOutOfBounds(destinationCoordinate)) {
+			throw new OutOfBoundsException(destinationCoordinate);
 		} else {
-			return coordinate;
+			return destinationCoordinate;
 		}
 	}
 }
