@@ -23,7 +23,19 @@ public enum Direction {
 	UP("toward rank 7"),
 
 	/** Toward rank 0, the same for both players. */
-	DOWN("toward rank 0");
+	DOWN("toward rank 0"),
+
+	/** diagonal toward A8, the same for both players. */
+	UP_A("diagonal up and a-ward"),
+
+	/** diagonal toward H8, the same for both players. */
+	UP_H("diagonal up and h-ward"),
+
+	/** diagonal toward A1, the same for both players. */
+	DOWN_A("diagonal down and a-ward"),
+
+	/** diagonal toward H1, the same for both players. */
+	DOWN_H("diagonal down and h-ward");
 
 	private String direction;
 

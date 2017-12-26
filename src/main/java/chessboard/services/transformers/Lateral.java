@@ -24,6 +24,8 @@ public abstract class Lateral extends Transformer {
 	public static Coordinate lateral(Coordinate coordinate, int distance, Direction direction)
 			throws OutOfBoundsException, WrongDirectionException {
 
+		Coordinate destination = null;
+
 		switch (direction) {
 			case A:
 				distance = -distance;
@@ -33,12 +35,13 @@ public abstract class Lateral extends Transformer {
 			default:
 				throw new WrongDirectionException(direction);
 		}
-		coordinate.setFileId(coordinate.getFileId() + distance);
 
-		if (coordinateOutOfBounds(coordinate)) {
-			throw new OutOfBoundsException(coordinate);
+		destination = new Coordinate(coordinate.getFileId() + distance, coordinate.getRankId());
+
+		if (coordinateOutOfBounds(destination)) {
+			throw new OutOfBoundsException(destination);
 		} else {
-			return coordinate;
+			return destination;
 		}
 	}
 }
