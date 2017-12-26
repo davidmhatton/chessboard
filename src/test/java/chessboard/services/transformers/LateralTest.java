@@ -56,8 +56,38 @@ public class LateralTest {
 	}
 
 	@Test
-	public void passingBadDirectionThrowsWrongDirectionException() {
+	public void upThrowsWrongDirectionException() {
 		assertThatThrownBy(() -> lateral(originCoordinate, 2, Direction.UP))
+				.isInstanceOf(WrongDirectionException.class);
+	}
+
+	@Test
+	public void downThrowsWrongDirectionException() {
+		assertThatThrownBy(() -> lateral(originCoordinate, 2, Direction.DOWN))
+				.isInstanceOf(WrongDirectionException.class);
+	}
+
+	@Test
+	public void upAThrowsWrongDirectionException() {
+		assertThatThrownBy(() -> lateral(originCoordinate, 2, Direction.UP_A))
+				.isInstanceOf(WrongDirectionException.class);
+	}
+
+	@Test
+	public void upHThrowsWrongDirectionException() {
+		assertThatThrownBy(() -> lateral(originCoordinate, 2, Direction.UP_H))
+				.isInstanceOf(WrongDirectionException.class);
+	}
+
+	@Test
+	public void downAThrowsWrongDirectionException() {
+		assertThatThrownBy(() -> lateral(originCoordinate, 2, Direction.DOWN_A))
+				.isInstanceOf(WrongDirectionException.class);
+	}
+
+	@Test
+	public void downHThrowsWrongDirectionException() {
+		assertThatThrownBy(() -> lateral(originCoordinate, 2, Direction.DOWN_H))
 				.isInstanceOf(WrongDirectionException.class);
 	}
 }

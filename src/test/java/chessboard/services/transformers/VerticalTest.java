@@ -131,4 +131,28 @@ public class VerticalTest {
 		assertThatThrownBy(() -> vertical(originCoordinate, testDistance, Direction.H))
 				.isInstanceOf(WrongDirectionException.class);
 	}
+
+	@Test
+	public void upAThrowsWrongDirectionException() {
+		assertThatThrownBy(() -> vertical(originCoordinate, 2, Direction.UP_A))
+				.isInstanceOf(WrongDirectionException.class);
+	}
+
+	@Test
+	public void upHThrowsWrongDirectionException() {
+		assertThatThrownBy(() -> vertical(originCoordinate, 2, Direction.UP_H))
+				.isInstanceOf(WrongDirectionException.class);
+	}
+
+	@Test
+	public void downAThrowsWrongDirectionException() {
+		assertThatThrownBy(() -> vertical(originCoordinate, 2, Direction.DOWN_A))
+				.isInstanceOf(WrongDirectionException.class);
+	}
+
+	@Test
+	public void downHThrowsWrongDirectionException() {
+		assertThatThrownBy(() -> vertical(originCoordinate, 2, Direction.DOWN_H))
+				.isInstanceOf(WrongDirectionException.class);
+	}
 }

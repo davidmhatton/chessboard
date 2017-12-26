@@ -24,11 +24,8 @@ public abstract class Vertical extends Transformer {
 	public static Coordinate vertical(Coordinate coordinate, int distance, Direction direction, Piece piece)
 			throws NoPieceException, OutOfBoundsException, WrongDirectionException {
 
-		Coordinate destinationCoordinate = null;
+		Coordinate destinationCoordinate;
 
-		if (direction == Direction.A || direction == Direction.H) {
-			throw new WrongDirectionException(direction);
-		}
 		if ((direction == Direction.AHEAD || direction == Direction.BEHIND) && piece == null) {
 			throw new NoPieceException(new Square(coordinate));
 		}
@@ -54,6 +51,9 @@ public abstract class Vertical extends Transformer {
 					destinationCoordinate = up(coordinate, distance);
 				}
 				break;
+
+			default:
+				throw new WrongDirectionException(direction);
 		}
 
 		return destinationCoordinate;
