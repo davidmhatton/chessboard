@@ -7,6 +7,7 @@ import org.junit.runners.BlockJUnit4ClassRunner;
 
 import chessboard.enums.Color;
 import chessboard.enums.Direction;
+import chessboard.exceptions.NoPieceException;
 import chessboard.exceptions.OutOfBoundsException;
 import chessboard.exceptions.WrongDirectionException;
 import chessboard.models.pieces.Pawn;
@@ -88,6 +89,22 @@ public class VerticalTest {
 
 		assertThat(destinationCoordinate.getFileId()).isEqualTo(originCoordinate.getFileId());
 		assertThat(destinationCoordinate.getRankId()).isEqualTo(originCoordinate.getRankId() + testDistance);
+	}
+
+	@Test
+	public void aheadFromEmptySquareThrowsNoPieceException() {
+		final int testDistance = 2;
+		assertThatThrownBy(
+				() -> vertical(originCoordinate, testDistance, Direction.AHEAD)
+		).isInstanceOf(NoPieceException.class);
+	}
+
+	@Test
+	public void behindFromEmptySquareThrowsNoPieceException() {
+		final int testDistance = 2;
+		assertThatThrownBy(
+				() -> vertical(originCoordinate, testDistance, Direction.BEHIND)
+		).isInstanceOf(NoPieceException.class);
 	}
 
 	@Test
