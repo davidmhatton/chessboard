@@ -14,7 +14,7 @@ import chessboard.services.helpers.Coordinate;
  *
  * @author David Hatton
  */
-public abstract class Vertical extends Transformer {
+public abstract class AbstractVerticalTransformer extends AbstractTransformer {
 
 	public static Coordinate vertical(Coordinate coordinate, int distance, Direction direction)
 			throws NoPieceException, OutOfBoundsException, WrongDirectionException {

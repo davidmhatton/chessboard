@@ -10,7 +10,7 @@ import chessboard.services.helpers.Coordinate;
  *
  * @author David Hatton
  */
-public abstract class Transformer {
+public abstract class AbstractTransformer {
 
 	private static boolean squareWithinBounds(int id) {
 		return id >= 0 && id <= 63;

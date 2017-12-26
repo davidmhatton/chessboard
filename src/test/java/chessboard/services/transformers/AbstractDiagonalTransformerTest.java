@@ -10,7 +10,7 @@ import chessboard.exceptions.OutOfBoundsException;
 import chessboard.exceptions.WrongDirectionException;
 import chessboard.services.helpers.Coordinate;
 
-import static chessboard.services.transformers.Diagonal.diagonal;
+import static chessboard.services.transformers.AbstractDiagonalTransformer.diagonal;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -20,7 +20,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * @author David Hatton
  */
 @RunWith(BlockJUnit4ClassRunner.class)
-public class DiagonalTest {
+public class AbstractDiagonalTransformerTest {
 
 	private Coordinate originCoordinate;
 

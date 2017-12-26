@@ -14,7 +14,7 @@ import chessboard.models.pieces.Pawn;
 import chessboard.models.places.Square;
 import chessboard.services.helpers.Coordinate;
 
-import static chessboard.services.transformers.Vertical.vertical;
+import static chessboard.services.transformers.AbstractVerticalTransformer.vertical;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -24,7 +24,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  * @author David Hatton
  */
 @RunWith(BlockJUnit4ClassRunner.class)
-public class VerticalTest {
+public class AbstractVerticalTransformerTest {
 
 	private Coordinate originCoordinate;
 

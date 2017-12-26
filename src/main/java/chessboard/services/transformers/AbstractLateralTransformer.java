@@ -11,7 +11,7 @@ import chessboard.services.helpers.Coordinate;
  *
  * @author David Hatton
  */
-public abstract class Lateral extends Transformer {
+public abstract class AbstractLateralTransformer extends AbstractTransformer {
 
 	/**
 	 * Lateral transformer.

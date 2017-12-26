@@ -5,15 +5,15 @@ import chessboard.exceptions.OutOfBoundsException;
 import chessboard.exceptions.WrongDirectionException;
 import chessboard.services.helpers.Coordinate;
 
-import static chessboard.services.transformers.Lateral.lateral;
-import static chessboard.services.transformers.Vertical.vertical;
+import static chessboard.services.transformers.AbstractLateralTransformer.lateral;
+import static chessboard.services.transformers.AbstractVerticalTransformer.vertical;
 
 /**
  * Transformers for diagonal movement.
  *
  * @author David Hatton
  */
-public abstract class Diagonal extends Transformer {
+public abstract class AbstractDiagonalTransformer extends AbstractTransformer {
 
 	/**
 	 * Master diagonal transformer.
