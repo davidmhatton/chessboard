@@ -60,9 +60,8 @@ public abstract class Vertical extends Transformer {
 	}
 
 	private static Coordinate up(Coordinate coordinate, int distance) throws OutOfBoundsException {
-		Coordinate destinationCoordinate = new Coordinate(coordinate.getFileId(), coordinate.getRankId());
+		Coordinate destinationCoordinate = new Coordinate(coordinate.getFileId(), coordinate.getRankId() + distance);
 
-		destinationCoordinate.setRankId(coordinate.getRankId() + distance);
 		if (coordinateOutOfBounds(destinationCoordinate)) {
 			throw new OutOfBoundsException(destinationCoordinate);
 		} else {
