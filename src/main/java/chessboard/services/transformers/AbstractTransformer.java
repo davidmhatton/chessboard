@@ -1,5 +1,6 @@
 package chessboard.services.transformers;
 
+import chessboard.enums.Direction;
 import chessboard.exceptions.NoPieceException;
 import chessboard.models.pieces.Piece;
 import chessboard.models.places.Square;
