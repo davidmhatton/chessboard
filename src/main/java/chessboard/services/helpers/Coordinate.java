@@ -19,15 +19,7 @@ public class Coordinate {
 		return fileId;
 	}
 
-	public void setFileId(int fileId) {
-		this.fileId = fileId;
-	}
-
 	public int getRankId() {
 		return rankId;
-	}
-
-	public void setRankId(int rankId) {
-		this.rankId = rankId;
 	}
 }

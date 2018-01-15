@@ -1,9 +1,5 @@
 package chessboard.services.transformers;
 
-import chessboard.enums.Direction;
-import chessboard.exceptions.NoPieceException;
-import chessboard.models.pieces.Piece;
-import chessboard.models.places.Square;
 import chessboard.services.helpers.Coordinate;
 
 /**
@@ -25,13 +21,5 @@ public abstract class AbstractTransformer {
 		final boolean fileCheck = coordinate.getFileId() < 0 || coordinate.getFileId() > 7;
 		final boolean rankCheck = coordinate.getRankId() < 0 || coordinate.getRankId() > 7;
 		return fileCheck || rankCheck;
-	}
-
-	public static Piece findPiece(Square square) throws NoPieceException {
-		try {
-			return square.getPiece();
-		} catch (NullPointerException npe) {
-			throw new NoPieceException(square);
-		}
 	}
 }
