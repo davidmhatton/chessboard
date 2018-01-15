@@ -40,101 +40,103 @@ public class AbstractKnightMoveTransformerTest {
 		The directions in jumps are entirely commutative.
 	 */
 
-	private static final List<Direction> KNIGHT_MOVE_0 = Arrays.asList(Direction.UP, Direction.UP, Direction.H);
-	private static final List<Direction> KNIGHT_MOVE_1 = Arrays.asList(Direction.UP, Direction.H, Direction.H);
-	private static final List<Direction> KNIGHT_MOVE_2 = Arrays.asList(Direction.DOWN, Direction.H, Direction.H);
-	private static final List<Direction> KNIGHT_MOVE_3 = Arrays.asList(Direction.DOWN, Direction.DOWN, Direction.H);
-	private static final List<Direction> KNIGHT_MOVE_4 = Arrays.asList(Direction.DOWN, Direction.DOWN, Direction.A);
-	private static final List<Direction> KNIGHT_MOVE_5 = Arrays.asList(Direction.DOWN, Direction.A, Direction.A);
-	private static final List<Direction> KNIGHT_MOVE_6 = Arrays.asList(Direction.UP, Direction.A, Direction.A);
-	private static final List<Direction> KNIGHT_MOVE_7 = Arrays.asList(Direction.UP, Direction.UP, Direction.A);
+	private static final List<List<Direction>> MOVE_LISTS = Arrays.asList(
+			Arrays.asList(Direction.UP, Direction.UP, Direction.H),
+			Arrays.asList(Direction.UP, Direction.H, Direction.H),
+			Arrays.asList(Direction.DOWN, Direction.H, Direction.H),
+			Arrays.asList(Direction.DOWN, Direction.DOWN, Direction.H),
+			Arrays.asList(Direction.DOWN, Direction.DOWN, Direction.A),
+			Arrays.asList(Direction.DOWN, Direction.A, Direction.A),
+			Arrays.asList(Direction.UP, Direction.A, Direction.A),
+			Arrays.asList(Direction.UP, Direction.UP, Direction.A)
+	);
 
 	private Coordinate origin;
 
 	@Test
 	public void knightMoveBeyondBoardThrowsOutOfBoundsException() {
-		origin = new Coordinate(0,0);
+		origin = new Coordinate(0, 0);
 
-		assertThatThrownBy(() -> knightMove(origin, KNIGHT_MOVE_6)).isInstanceOf(OutOfBoundsException.class);
+		assertThatThrownBy(() -> knightMove(origin, MOVE_LISTS.get(6))).isInstanceOf(OutOfBoundsException.class);
 	}
 
 	@Test
 	public void badDirectionInJumpsThrowsWrongDirectionException() {
 		final List<Direction> jumps = Arrays.asList(Direction.DOWN_A, Direction.H, Direction.H);
-		origin = new Coordinate(3,3);
+		origin = new Coordinate(3, 3);
 
 		assertThatThrownBy(() -> knightMove(origin, jumps)).isInstanceOf(WrongDirectionException.class);
 	}
 
 	@Test
 	public void knightMoveReturnsCorrectCoordinates0() throws Exception {
-		origin = new Coordinate(3,3);
-		Coordinate destination = knightMove(origin, KNIGHT_MOVE_0);
+		origin = new Coordinate(3, 3);
+		Coordinate destination = knightMove(origin, MOVE_LISTS.get(0));
+		Coordinate expected = new Coordinate(origin.getFileId() + 1, origin.getRankId() + 2);
 
-		assertThat(destination.getFileId()).isEqualTo(origin.getFileId() + 1);
-		assertThat(destination.getRankId()).isEqualTo(origin.getRankId() + 2);
+		assertThat(destination).isEqualTo(expected);
 	}
 
 	@Test
 	public void knightMoveReturnsCorrectCoordinates1() throws Exception {
-		origin = new Coordinate(3,3);
-		Coordinate destination = knightMove(origin, KNIGHT_MOVE_1);
+		origin = new Coordinate(3, 3);
+		Coordinate destination = knightMove(origin, MOVE_LISTS.get(1));
+		Coordinate expected = new Coordinate(origin.getFileId() + 2, origin.getRankId() + 1);
 
-		assertThat(destination.getFileId()).isEqualTo(origin.getFileId() + 2);
-		assertThat(destination.getRankId()).isEqualTo(origin.getRankId() + 1);
+		assertThat(destination).isEqualTo(expected);
 	}
 
 	@Test
 	public void knightMoveReturnsCorrectCoordinates2() throws Exception {
-		origin = new Coordinate(3,3);
-		Coordinate destination = knightMove(origin, KNIGHT_MOVE_2);
+		origin = new Coordinate(3, 3);
+		Coordinate destination = knightMove(origin, MOVE_LISTS.get(2));
+		Coordinate expected = new Coordinate(origin.getFileId() + 2, origin.getRankId() - 1);
 
-		assertThat(destination.getFileId()).isEqualTo(origin.getFileId() + 2);
-		assertThat(destination.getRankId()).isEqualTo(origin.getRankId() - 1);
+		assertThat(destination).isEqualTo(expected);
 	}
 
 	@Test
 	public void knightMoveReturnsCorrectCoordinates3() throws Exception {
-		origin = new Coordinate(3,3);
-		Coordinate destination = knightMove(origin, KNIGHT_MOVE_3);
+		origin = new Coordinate(3, 3);
+		Coordinate destination = knightMove(origin, MOVE_LISTS.get(3));
+		Coordinate expected = new Coordinate(origin.getFileId() + 1, origin.getRankId() - 2);
 
-		assertThat(destination.getFileId()).isEqualTo(origin.getFileId() + 1);
-		assertThat(destination.getRankId()).isEqualTo(origin.getRankId() - 2);
+		assertThat(destination).isEqualTo(expected);
 	}
 
 	@Test
 	public void knightMoveReturnsCorrectCoordinates4() throws Exception {
-		origin = new Coordinate(3,3);
-		Coordinate destination = knightMove(origin, KNIGHT_MOVE_4);
+		origin = new Coordinate(3, 3);
+		Coordinate destination = knightMove(origin, MOVE_LISTS.get(4));
+		Coordinate expected = new Coordinate(origin.getFileId() - 1, origin.getRankId() - 2);
 
-		assertThat(destination.getFileId()).isEqualTo(origin.getFileId() - 1);
-		assertThat(destination.getRankId()).isEqualTo(origin.getRankId() - 2);
+		assertThat(destination).isEqualTo(expected);
 	}
 
 	@Test
 	public void knightMoveReturnsCorrectCoordinates5() throws Exception {
-		origin = new Coordinate(3,3);
-		Coordinate destination = knightMove(origin, KNIGHT_MOVE_5);
+		origin = new Coordinate(3, 3);
+		Coordinate destination = knightMove(origin, MOVE_LISTS.get(5));
+		Coordinate expected = new Coordinate(origin.getFileId() - 2, origin.getRankId() - 1);
 
-		assertThat(destination.getFileId()).isEqualTo(origin.getFileId() - 2);
-		assertThat(destination.getRankId()).isEqualTo(origin.getRankId() - 1);
+		assertThat(destination).isEqualTo(expected);
 	}
 
 	@Test
 	public void knightMoveReturnsCorrectCoordinates6() throws Exception {
-		origin = new Coordinate(3,3);
-		Coordinate destination = knightMove(origin, KNIGHT_MOVE_6);
+		origin = new Coordinate(3, 3);
+		Coordinate destination = knightMove(origin, MOVE_LISTS.get(6));
+		Coordinate expected = new Coordinate(origin.getFileId() - 2, origin.getRankId() + 1);
 
-		assertThat(destination.getFileId()).isEqualTo(origin.getFileId() - 2);
-		assertThat(destination.getRankId()).isEqualTo(origin.getRankId() + 1);
+		assertThat(destination).isEqualTo(expected);
 	}
 
 	@Test
 	public void knightMoveReturnsCorrectCoordinates7() throws Exception {
-		origin = new Coordinate(3,3);
-		Coordinate destination = knightMove(origin, KNIGHT_MOVE_7);
+		origin = new Coordinate(3, 3);
+		Coordinate destination = knightMove(origin, MOVE_LISTS.get(7));
+		Coordinate expected = new Coordinate(origin.getFileId() - 1, origin.getRankId() + 2);
 
-		assertThat(destination.getFileId()).isEqualTo(origin.getFileId() - 1);
-		assertThat(destination.getRankId()).isEqualTo(origin.getRankId() + 2);
+		assertThat(destination).isEqualTo(expected);
 	}
 }

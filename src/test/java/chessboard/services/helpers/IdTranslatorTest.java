@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 /**
  * Tests for the square ID translator.
  *
- * @author David Hatton (dhatton@turnitin.com)
+ * @author David Hatton
  */
 @RunWith(BlockJUnit4ClassRunner.class)
 public class IdTranslatorTest {
@@ -23,8 +23,7 @@ public class IdTranslatorTest {
 
 	@Test
 	public void idToCoordinateReturnsCorrectAnswer() throws Exception {
-		assertThat(idToCoordinate(TEST_SQUARE_ID).getFileId()).isEqualTo(TEST_FILE_ID);
-		assertThat(idToCoordinate(TEST_SQUARE_ID).getRankId()).isEqualTo(TEST_RANK_ID);
+		assertThat(idToCoordinate(TEST_SQUARE_ID)).isEqualTo(TEST_SQUARE_COORDINATE);
 	}
 
 	@Test

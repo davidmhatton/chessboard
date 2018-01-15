@@ -69,10 +69,13 @@ public class AbstractDiagonalTransformerTest {
 
 	@Test
 	public void upAReturnsCorrectCoordinates() throws Exception {
-		Coordinate destination = diagonal(originCoordinate, LITTLE_DISTANCE, Direction.UP_A);
+		Coordinate actualDestination = diagonal(originCoordinate, LITTLE_DISTANCE, Direction.UP_A);
+		Coordinate expectedDestination = new Coordinate(
+				originCoordinate.getFileId() - LITTLE_DISTANCE,
+				originCoordinate.getRankId() + LITTLE_DISTANCE
+		);
 
-		assertThat(destination.getFileId()).isEqualTo(originCoordinate.getFileId() - LITTLE_DISTANCE);
-		assertThat(destination.getRankId()).isEqualTo(originCoordinate.getRankId() + LITTLE_DISTANCE);
+		assertThat(actualDestination).isEqualTo(expectedDestination);
 	}
 
 	@Test
@@ -84,10 +87,13 @@ public class AbstractDiagonalTransformerTest {
 
 	@Test
 	public void upHReturnsCorrectCoordinates() throws Exception {
-		Coordinate destination = diagonal(originCoordinate, LITTLE_DISTANCE, Direction.UP_H);
+		Coordinate actualDestination = diagonal(originCoordinate, LITTLE_DISTANCE, Direction.UP_H);
+		Coordinate expectedDestination = new Coordinate(
+				originCoordinate.getFileId() + LITTLE_DISTANCE,
+				originCoordinate.getRankId() + LITTLE_DISTANCE
+		);
 
-		assertThat(destination.getFileId()).isEqualTo(originCoordinate.getFileId() + LITTLE_DISTANCE);
-		assertThat(destination.getRankId()).isEqualTo(originCoordinate.getRankId() + LITTLE_DISTANCE);
+		assertThat(actualDestination).isEqualTo(expectedDestination);
 	}
 
 	@Test
@@ -99,10 +105,13 @@ public class AbstractDiagonalTransformerTest {
 
 	@Test
 	public void downAReturnsCorrectCoordinates() throws Exception {
-		Coordinate destination = diagonal(originCoordinate, LITTLE_DISTANCE, Direction.DOWN_A);
+		Coordinate actualDestination = diagonal(originCoordinate, LITTLE_DISTANCE, Direction.DOWN_A);
+		Coordinate expectedDestination = new Coordinate(
+				originCoordinate.getFileId() - LITTLE_DISTANCE,
+				originCoordinate.getRankId() - LITTLE_DISTANCE
+		);
 
-		assertThat(destination.getFileId()).isEqualTo(originCoordinate.getFileId() - LITTLE_DISTANCE);
-		assertThat(destination.getRankId()).isEqualTo(originCoordinate.getRankId() - LITTLE_DISTANCE);
+		assertThat(actualDestination).isEqualTo(expectedDestination);
 	}
 
 
@@ -115,9 +124,12 @@ public class AbstractDiagonalTransformerTest {
 
 	@Test
 	public void downHReturnsCorrectCoordinates() throws Exception {
-		Coordinate destination = diagonal(originCoordinate, LITTLE_DISTANCE, Direction.DOWN_H);
+		Coordinate actualDestination = diagonal(originCoordinate, LITTLE_DISTANCE, Direction.DOWN_H);
+		Coordinate expectedDestination = new Coordinate(
+				originCoordinate.getFileId() + LITTLE_DISTANCE,
+				originCoordinate.getRankId() - LITTLE_DISTANCE
+		);
 
-		assertThat(destination.getFileId()).isEqualTo(originCoordinate.getFileId() + LITTLE_DISTANCE);
-		assertThat(destination.getRankId()).isEqualTo(originCoordinate.getRankId() - LITTLE_DISTANCE);
+		assertThat(actualDestination).isEqualTo(expectedDestination);
 	}
 }

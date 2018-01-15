@@ -34,4 +34,8 @@ public class OutOfBoundsException extends Exception {
 	public int getId() {
 		return id;
 	}
+
+	public Coordinate getCoordinate() {
+		return coordinate;
+	}
 }

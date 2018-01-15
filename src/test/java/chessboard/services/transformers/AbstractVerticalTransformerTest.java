@@ -37,18 +37,18 @@ public class AbstractVerticalTransformerTest {
 	public void verticalWorksUp() throws Exception {
 		final int testDistance = 2;
 		Coordinate destinationCoordinate = vertical(originCoordinate, testDistance, Direction.UP);
+		Coordinate expectedCoordinate = new Coordinate(originCoordinate.getFileId(), originCoordinate.getRankId() + testDistance);
 
-		assertThat(destinationCoordinate.getFileId()).isEqualTo(originCoordinate.getFileId());
-		assertThat(destinationCoordinate.getRankId()).isEqualTo(originCoordinate.getRankId() + testDistance);
+		assertThat(destinationCoordinate).isEqualTo(expectedCoordinate);
 	}
 
 	@Test
 	public void verticalWorksDown() throws Exception {
 		final int testDistance = 2;
 		Coordinate destinationCoordinate = vertical(originCoordinate, testDistance, Direction.DOWN);
+		Coordinate expectedCoordinate = new Coordinate(originCoordinate.getFileId(), originCoordinate.getRankId() - testDistance);
 
-		assertThat(destinationCoordinate.getFileId()).isEqualTo(originCoordinate.getFileId());
-		assertThat(destinationCoordinate.getRankId()).isEqualTo(originCoordinate.getRankId() - testDistance);
+		assertThat(destinationCoordinate).isEqualTo(expectedCoordinate);
 	}
 
 	@Test
@@ -56,9 +56,9 @@ public class AbstractVerticalTransformerTest {
 		final int testDistance = 2;
 		final Pawn testPiece = new Pawn(false, false, new Square(originCoordinate).getId(), Color.WHITE);
 		Coordinate destinationCoordinate = vertical(originCoordinate, testDistance, Direction.AHEAD, testPiece);
+		Coordinate expectedCoordinate = new Coordinate(originCoordinate.getFileId(), originCoordinate.getRankId() + testDistance);
 
-		assertThat(destinationCoordinate.getFileId()).isEqualTo(originCoordinate.getFileId());
-		assertThat(destinationCoordinate.getRankId()).isEqualTo(originCoordinate.getRankId() + testDistance);
+		assertThat(destinationCoordinate).isEqualTo(expectedCoordinate);
 	}
 
 	@Test
@@ -66,9 +66,9 @@ public class AbstractVerticalTransformerTest {
 		final int testDistance = 2;
 		final Pawn testPiece = new Pawn(false, false, new Square(originCoordinate).getId(), Color.BLACK);
 		Coordinate destinationCoordinate = vertical(originCoordinate, testDistance, Direction.AHEAD, testPiece);
+		Coordinate expectedCoordinate = new Coordinate(originCoordinate.getFileId(), originCoordinate.getRankId() - testDistance);
 
-		assertThat(destinationCoordinate.getFileId()).isEqualTo(originCoordinate.getFileId());
-		assertThat(destinationCoordinate.getRankId()).isEqualTo(originCoordinate.getRankId() - testDistance);
+		assertThat(destinationCoordinate).isEqualTo(expectedCoordinate);
 	}
 
 	@Test
@@ -76,9 +76,9 @@ public class AbstractVerticalTransformerTest {
 		final int testDistance = 2;
 		final Pawn testPiece = new Pawn(false, false, new Square(originCoordinate).getId(), Color.WHITE);
 		Coordinate destinationCoordinate = vertical(originCoordinate, testDistance, Direction.BEHIND, testPiece);
+		Coordinate expectedCoordinate = new Coordinate(originCoordinate.getFileId(), originCoordinate.getRankId() - testDistance);
 
-		assertThat(destinationCoordinate.getFileId()).isEqualTo(originCoordinate.getFileId());
-		assertThat(destinationCoordinate.getRankId()).isEqualTo(originCoordinate.getRankId() - testDistance);
+		assertThat(destinationCoordinate).isEqualTo(expectedCoordinate);
 	}
 
 	@Test
@@ -86,9 +86,9 @@ public class AbstractVerticalTransformerTest {
 		final int testDistance = 2;
 		final Pawn testPiece = new Pawn(false, false, new Square(originCoordinate).getId(), Color.BLACK);
 		Coordinate destinationCoordinate = vertical(originCoordinate, testDistance, Direction.BEHIND, testPiece);
+		Coordinate expectedCoordinate = new Coordinate(originCoordinate.getFileId(), originCoordinate.getRankId() + testDistance);
 
-		assertThat(destinationCoordinate.getFileId()).isEqualTo(originCoordinate.getFileId());
-		assertThat(destinationCoordinate.getRankId()).isEqualTo(originCoordinate.getRankId() + testDistance);
+		assertThat(destinationCoordinate).isEqualTo(expectedCoordinate);
 	}
 
 	@Test

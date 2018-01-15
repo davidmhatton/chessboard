@@ -30,17 +30,19 @@ public class AbstractLateralTransformerTest {
 	}
 
 	@Test
-	public void lateralWorksForA() throws Exception {
-		Coordinate transformedCoordinate = lateral(originCoordinate, 2, Direction.A);
-		assertThat(transformedCoordinate.getFileId()).isEqualTo(1);
-		assertThat(transformedCoordinate.getRankId()).isEqualTo(4);
+	public void returnsCorrectCoordinateA() throws Exception {
+		Coordinate expectedDestination = new Coordinate(1,4);
+		Coordinate actualDestination = lateral(originCoordinate, 2, Direction.A);
+
+		assertThat(actualDestination).isEqualTo(expectedDestination);
 	}
 
 	@Test
-	public void lateralWorksForH() throws Exception {
-		Coordinate transformedCoordinate = lateral(originCoordinate, 2, Direction.H);
-		assertThat(transformedCoordinate.getFileId()).isEqualTo(5);
-		assertThat(transformedCoordinate.getRankId()).isEqualTo(4);
+	public void returnsCorrectCoordinateH() throws Exception {
+		Coordinate expectedDestination = new Coordinate(5,4);
+		Coordinate actualDestination = lateral(originCoordinate, 2, Direction.H);
+
+		assertThat(actualDestination).isEqualTo(expectedDestination);
 	}
 
 	@Test

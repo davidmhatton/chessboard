@@ -5,7 +5,6 @@ import org.junit.runner.RunWith;
 import org.junit.runners.BlockJUnit4ClassRunner;
 
 import chessboard.enums.Color;
-import chessboard.models.pieces.Pawn;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -18,7 +17,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class SquareTest {
 
 	@Test
-	public void evenSquareCreatesWithIdHasCoordinates() throws Exception {
+	public void evenSquareCreatesWithIdHasCoordinates() {
 		final Square evenSquare = new Square(16);
 
 		assertThat(evenSquare.getFileId()).isEqualTo(0);
@@ -26,7 +25,7 @@ public class SquareTest {
 	}
 
 	@Test
-	public void oddSquareCreatesWithIdHasCoordinates() throws Exception {
+	public void oddSquareCreatesWithIdHasCoordinates() {
 		final Square oddSquare = new Square(17);
 
 		assertThat(oddSquare.getFileId()).isEqualTo(1);
@@ -34,13 +33,13 @@ public class SquareTest {
 	}
 
 	@Test
-	public void evenSquareSecondRankCreatesWithIdHasCorrectColor() throws Exception {
+	public void evenSquareSecondRankCreatesWithIdHasCorrectColor() {
 		final Square evenSquare = new Square(16);
 		assertThat(evenSquare.getColor()).isEqualTo(Color.BLACK);
 	}
 
 	@Test
-	public void oddSquareSecondRankCreatesWithIdHasCorrectColor() throws Exception {
+	public void oddSquareSecondRankCreatesWithIdHasCorrectColor() {
 		final Square oddSquare = new Square(17);
 		assertThat(oddSquare.getColor()).isEqualTo(Color.WHITE);
 	}
