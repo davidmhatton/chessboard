@@ -2,7 +2,6 @@ package chessboard.services.transformers;
 
 import org.junit.Test;
 
-import chessboard.models.places.Square;
 import chessboard.services.helpers.Coordinate;
 
 import static chessboard.services.transformers.AbstractTransformer.coordinateOutOfBounds;
