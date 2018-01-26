@@ -87,8 +87,8 @@
 				 	org.springframework.test.web.client.match.MockRestRequestMatchers.*,
 				 	org.springframework.test.web.client.response.MockRestResponseCreators.*,
 				 	chessboard.services.helpers.IdTranslator.*,
-				 	chessboard.services.transformers.AbstractVerticalTransformer.*,
-					chessboard.services.transformers.AbstractLateralTransformer.*"
+				 	chessboard.services.transformers.VerticalTransformer.*,
+					chessboard.services.transformers.LateralTransformer.*"
 			/>
 		</module>
 		<module name="com.puppycrawl.tools.checkstyle.checks.imports.IllegalImportCheck" />
