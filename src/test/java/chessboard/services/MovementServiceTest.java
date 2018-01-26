@@ -6,9 +6,7 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import chessboard.enums.Direction;
@@ -37,7 +35,6 @@ public class MovementServiceTest {
 	private Coordinate origin;
 	private int distance;
 
-	@InjectMocks
 	private MovementService movementService;
 
 	@Mock
@@ -57,8 +54,7 @@ public class MovementServiceTest {
 		origin = new Coordinate(0,0);
 		distance = 4;
 
-		movementService = new MovementService(origin);
-		MockitoAnnotations.initMocks(this);
+		movementService = new MovementService(diagonalTransformer, knightMoveTransformer, lateralTransformer, verticalTransformer);
 
 		when(diagonalTransformer.diagonal(any(Coordinate.class), anyInt(), any(Direction.class))).thenReturn(TEST_RETURN_COORDINATE);
 		when(knightMoveTransformer.knightMove(any(Coordinate.class), anyListOf(Direction.class))).thenReturn(TEST_RETURN_COORDINATE);
@@ -70,7 +66,7 @@ public class MovementServiceTest {
 	public void diagonalCallsDiagonalTransformerWithExpectedParams() throws Exception {
 		final Direction direction = Direction.UP_H;
 
-		movementService.diagonal(distance, direction);
+		movementService.diagonal(origin, distance, direction);
 		verify(diagonalTransformer, times(1)).diagonal(origin, distance, direction);
 	}
 
@@ -78,7 +74,7 @@ public class MovementServiceTest {
 	public void knightMoveCallsKnightMoveTransformerWithExpectedParams() throws Exception {
 		final List<Direction> directionList = Arrays.asList(Direction.H, Direction.H, Direction.UP);
 
-		movementService.knightMove(directionList);
+		movementService.knightMove(origin, directionList);
 		verify(knightMoveTransformer, times(1)).knightMove(origin, directionList);
 	}
 
@@ -86,7 +82,7 @@ public class MovementServiceTest {
 	public void lateralCallsLateralTransformerWithExpectedParams() throws Exception {
 		final Direction direction = Direction.H;
 
-		movementService.lateral(distance, direction);
+		movementService.lateral(origin, distance, direction);
 		verify(lateralTransformer, times(1)).lateral(origin, distance, direction);
 	}
 
@@ -94,7 +90,7 @@ public class MovementServiceTest {
 	public void verticalCallsVerticalTransformerWithExpectedParams() throws Exception {
 		final Direction direction = Direction.UP;
 
-		movementService.vertical(distance, direction);
+		movementService.vertical(origin, distance, direction);
 		verify(verticalTransformer, times(1)).vertical(origin, distance, direction);
 	}
 }

@@ -11,7 +11,6 @@ import chessboard.services.transformers.KnightMoveTransformer;
 import chessboard.services.transformers.LateralTransformer;
 import chessboard.services.transformers.VerticalTransformer;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -22,41 +21,31 @@ import org.springframework.stereotype.Service;
 @Service
 public class MovementService {
 
-	private Coordinate origin;
-
-	@Autowired
 	private DiagonalTransformer diagonalTransformer;
-
-	@Autowired
 	private KnightMoveTransformer knightMoveTransformer;
-
-	@Autowired
 	private LateralTransformer lateralTransformer;
-
-	@Autowired
 	private VerticalTransformer verticalTransformer;
 
-	public MovementService() {
-		// default constructor
+	public MovementService(DiagonalTransformer diagonalTransformer, KnightMoveTransformer knightMoveTransformer, LateralTransformer lateralTransformer, VerticalTransformer verticalTransformer) {
+		this.diagonalTransformer = diagonalTransformer;
+		this.knightMoveTransformer = knightMoveTransformer;
+		this.lateralTransformer = lateralTransformer;
+		this.verticalTransformer = verticalTransformer;
 	}
 
-	public MovementService(Coordinate origin) {
-		this.origin = origin;
-	}
-
-	public Coordinate diagonal(int distance, Direction direction) throws OutOfBoundsException, WrongDirectionException {
+	public Coordinate diagonal(Coordinate origin, int distance, Direction direction) throws OutOfBoundsException, WrongDirectionException {
 		return diagonalTransformer.diagonal(origin, distance, direction);
 	}
 
-	public Coordinate knightMove(List<Direction> jumps) throws OutOfBoundsException, WrongDirectionException {
+	public Coordinate knightMove(Coordinate origin, List<Direction> jumps) throws OutOfBoundsException, WrongDirectionException {
 		return knightMoveTransformer.knightMove(origin, jumps);
 	}
 
-	public Coordinate lateral(int distance, Direction direction) throws OutOfBoundsException, WrongDirectionException {
+	public Coordinate lateral(Coordinate origin, int distance, Direction direction) throws OutOfBoundsException, WrongDirectionException {
 		return lateralTransformer.lateral(origin, distance, direction);
 	}
 
-	public Coordinate vertical(int distance, Direction direction) throws OutOfBoundsException, WrongDirectionException {
+	public Coordinate vertical(Coordinate origin, int distance, Direction direction) throws OutOfBoundsException, WrongDirectionException {
 		return verticalTransformer.vertical(origin, distance, direction);
 	}
 }
