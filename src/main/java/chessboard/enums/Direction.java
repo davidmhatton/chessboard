@@ -7,12 +7,6 @@ package chessboard.enums;
  */
 public enum Direction {
 
-	/** Ahead relative to player */
-	AHEAD("ahead"),
-
-	/** Behind relative to player */
-	BEHIND("behind"),
-
 	/** Toward file A, the same for both players. */
 	A("toward file A"),
 

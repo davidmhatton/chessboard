@@ -1,6 +1,7 @@
 package chessboard.models.pieces;
 
 import chessboard.enums.Color;
+import chessboard.services.helpers.Coordinate;
 
 /**
  * Master piece.
@@ -13,13 +14,14 @@ public class Piece {
 	private String letter;
 	private boolean taken;
 	private boolean pinned;
-	private int location;
+	private Coordinate location;
+	private Coordinate defaultLocation;
 	private Color color;
 
 	public Piece() {
 	}
 
-	public Piece(String name, String letter, boolean taken, boolean pinned, int location, Color color) {
+	public Piece(String name, String letter, boolean taken, boolean pinned, Coordinate location, Color color) {
 		this.name = name;
 		this.letter = letter;
 		this.taken = taken;
@@ -52,12 +54,16 @@ public class Piece {
 		this.pinned = pinned;
 	}
 
-	public int getLocation() {
+	public Coordinate getLocation() {
 		return location;
 	}
 
-	public void setLocation(int location) {
+	public void setLocation(Coordinate location) {
 		this.location = location;
+	}
+
+	public Coordinate getDefaultLocation() {
+		return defaultLocation;
 	}
 
 	public Color getColor() {
