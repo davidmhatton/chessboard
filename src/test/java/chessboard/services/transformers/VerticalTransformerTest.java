@@ -50,22 +50,6 @@ public class VerticalTransformerTest {
 	}
 
 	@Test
-	public void aheadFromEmptySquareThrowsNoPieceException() {
-		final int testDistance = 2;
-		assertThatThrownBy(
-				() -> verticalTransformer.vertical(originCoordinate, testDistance, Direction.AHEAD)
-		).isInstanceOf(NoPieceException.class);
-	}
-
-	@Test
-	public void behindFromEmptySquareThrowsNoPieceException() {
-		final int testDistance = 2;
-		assertThatThrownBy(
-				() -> verticalTransformer.vertical(originCoordinate, testDistance, Direction.BEHIND)
-		).isInstanceOf(NoPieceException.class);
-	}
-
-	@Test
 	public void absoluteMoveTooFarThrowsOutOfBoundsException() {
 		final int testDistance = 7;
 
