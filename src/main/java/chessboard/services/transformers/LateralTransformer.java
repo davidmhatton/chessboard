@@ -15,28 +15,26 @@ import org.springframework.stereotype.Service;
 @Service
 public class LateralTransformer extends AbstractTransformer {
 
-	public LateralTransformer() {
-		// default constructor
-	}
-
 	/**
 	 * Lateral transformer.
 	 *
 	 * @param coordinate coordinates that are to be transformed.
-	 * @param distance how far to move.
+	 * @param givenDistance how far to move.
 	 * @param direction the direction in which to move.
 	 * @return coordinate of destination square.
 	 */
-	public Coordinate lateral(Coordinate coordinate, int distance, Direction direction)
+	public Coordinate lateral(Coordinate coordinate, int givenDistance, Direction direction)
 			throws OutOfBoundsException, WrongDirectionException {
 
 		Coordinate destination = null;
+		int distance;
 
 		switch (direction) {
 			case A:
-				distance = -distance;
+				distance = -givenDistance;
 				break;
 			case H:
+				distance = givenDistance;
 				break;
 			default:
 				throw new WrongDirectionException(direction);

@@ -20,9 +20,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class PawnTest {
 
 	private static final Coordinate WHITE_START_COORDINATE = new Coordinate(3,1);
-	private static final Coordinate Black_START_COORDINATE = new Coordinate(3,6);
 	private static final int WHITE_START_ID = coordinateToId(WHITE_START_COORDINATE);
-	private static final int BLACK_START_ID = coordinateToId(Black_START_COORDINATE);
 
 	@Test
 	public void whiteAdvanceOneToEmptySquareIsAllowed() throws Exception {
