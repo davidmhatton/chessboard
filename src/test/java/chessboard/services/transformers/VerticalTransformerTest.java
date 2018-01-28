@@ -5,13 +5,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.BlockJUnit4ClassRunner;
 
-import chessboard.enums.Color;
 import chessboard.enums.Direction;
 import chessboard.exceptions.NoPieceException;
 import chessboard.exceptions.OutOfBoundsException;
 import chessboard.exceptions.WrongDirectionException;
-import chessboard.models.pieces.Pawn;
-import chessboard.models.places.Square;
 import chessboard.services.helpers.Coordinate;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -53,46 +50,6 @@ public class VerticalTransformerTest {
 	}
 
 	@Test
-	public void verticalWorksAheadForWhite() throws Exception {
-		final int testDistance = 2;
-		final Pawn testPiece = new Pawn(false, false, new Square(originCoordinate).getId(), Color.WHITE);
-		Coordinate destinationCoordinate = verticalTransformer.vertical(originCoordinate, testDistance, Direction.AHEAD, testPiece);
-		Coordinate expectedCoordinate = new Coordinate(originCoordinate.getFileId(), originCoordinate.getRankId() + testDistance);
-
-		assertThat(destinationCoordinate).isEqualTo(expectedCoordinate);
-	}
-
-	@Test
-	public void verticalWorksAheadForBlack() throws Exception {
-		final int testDistance = 2;
-		final Pawn testPiece = new Pawn(false, false, new Square(originCoordinate).getId(), Color.BLACK);
-		Coordinate destinationCoordinate = verticalTransformer.vertical(originCoordinate, testDistance, Direction.AHEAD, testPiece);
-		Coordinate expectedCoordinate = new Coordinate(originCoordinate.getFileId(), originCoordinate.getRankId() - testDistance);
-
-		assertThat(destinationCoordinate).isEqualTo(expectedCoordinate);
-	}
-
-	@Test
-	public void verticalWorksBehindForWhite() throws Exception {
-		final int testDistance = 2;
-		final Pawn testPiece = new Pawn(false, false, new Square(originCoordinate).getId(), Color.WHITE);
-		Coordinate destinationCoordinate = verticalTransformer.vertical(originCoordinate, testDistance, Direction.BEHIND, testPiece);
-		Coordinate expectedCoordinate = new Coordinate(originCoordinate.getFileId(), originCoordinate.getRankId() - testDistance);
-
-		assertThat(destinationCoordinate).isEqualTo(expectedCoordinate);
-	}
-
-	@Test
-	public void verticalWorksBehindForBlack() throws Exception {
-		final int testDistance = 2;
-		final Pawn testPiece = new Pawn(false, false, new Square(originCoordinate).getId(), Color.BLACK);
-		Coordinate destinationCoordinate = verticalTransformer.vertical(originCoordinate, testDistance, Direction.BEHIND, testPiece);
-		Coordinate expectedCoordinate = new Coordinate(originCoordinate.getFileId(), originCoordinate.getRankId() + testDistance);
-
-		assertThat(destinationCoordinate).isEqualTo(expectedCoordinate);
-	}
-
-	@Test
 	public void aheadFromEmptySquareThrowsNoPieceException() {
 		final int testDistance = 2;
 		assertThatThrownBy(
@@ -115,28 +72,6 @@ public class VerticalTransformerTest {
 		assertThatThrownBy(() -> verticalTransformer.vertical(originCoordinate, testDistance, Direction.UP))
 				.isInstanceOf(OutOfBoundsException.class);
 		assertThatThrownBy(() -> verticalTransformer.vertical(originCoordinate, testDistance, Direction.DOWN))
-				.isInstanceOf(OutOfBoundsException.class);
-	}
-
-	@Test
-	public void relativeWhiteMoveTooFarThrowsOutOfBoundsException() {
-		final int testDistance = 7;
-		final Pawn testPieceWhite = new Pawn(false, false, new Square(originCoordinate).getId(), Color.WHITE);
-
-		assertThatThrownBy(() -> verticalTransformer.vertical(originCoordinate, testDistance, Direction.AHEAD, testPieceWhite))
-				.isInstanceOf(OutOfBoundsException.class);
-		assertThatThrownBy(() -> verticalTransformer.vertical(originCoordinate, testDistance, Direction.BEHIND, testPieceWhite))
-				.isInstanceOf(OutOfBoundsException.class);
-	}
-
-	@Test
-	public void relativeBlackMoveTooFarThrowsOutOfBoundsException() {
-		final int testDistance = 7;
-		final Pawn testPieceWhite = new Pawn(false, false, new Square(originCoordinate).getId(), Color.WHITE);
-
-		assertThatThrownBy(() -> verticalTransformer.vertical(originCoordinate, testDistance, Direction.AHEAD, testPieceWhite))
-				.isInstanceOf(OutOfBoundsException.class);
-		assertThatThrownBy(() -> verticalTransformer.vertical(originCoordinate, testDistance, Direction.BEHIND, testPieceWhite))
 				.isInstanceOf(OutOfBoundsException.class);
 	}
 

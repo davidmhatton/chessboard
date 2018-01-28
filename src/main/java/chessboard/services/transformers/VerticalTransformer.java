@@ -21,17 +21,8 @@ public class VerticalTransformer extends AbstractTransformer {
 
 	public Coordinate vertical(Coordinate coordinate, int distance, Direction direction)
 			throws NoPieceException, OutOfBoundsException, WrongDirectionException {
-		return vertical(coordinate, distance, direction, null);
-	}
-
-	public Coordinate vertical(Coordinate coordinate, int distance, Direction direction, Piece piece)
-			throws NoPieceException, OutOfBoundsException, WrongDirectionException {
 
 		Coordinate destinationCoordinate;
-
-		if ((direction == Direction.AHEAD || direction == Direction.BEHIND) && piece == null) {
-			throw new NoPieceException(new Square(coordinate));
-		}
 
 		switch (direction) {
 			case UP:
@@ -39,20 +30,6 @@ public class VerticalTransformer extends AbstractTransformer {
 				break;
 			case DOWN:
 				destinationCoordinate = up(coordinate, -distance);
-				break;
-			case AHEAD:
-				if (piece.getColor() == Color.WHITE) {
-					destinationCoordinate = up(coordinate, distance);
-				} else {
-					destinationCoordinate = up(coordinate, -distance);
-				}
-				break;
-			case BEHIND:
-				if (piece.getColor() == Color.WHITE) {
-					destinationCoordinate = up(coordinate, -distance);
-				} else {
-					destinationCoordinate = up(coordinate, distance);
-				}
 				break;
 
 			default:
