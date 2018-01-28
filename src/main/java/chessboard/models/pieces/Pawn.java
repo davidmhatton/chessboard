@@ -87,7 +87,6 @@ public class Pawn extends Piece {
 
 	private boolean legalMoveBlack(Square destination) {
 		// Temporary content to satisfy codacy
-		destination = new Square(0);
-		return destination == new Square(1);
+		return destination.equals(new Square(1));
 	}
 }
