@@ -10,12 +10,12 @@ import chessboard.services.helpers.Coordinate;
  */
 public abstract class MasterPiece {
 
-	String name;
-	String letter;
-	boolean taken;
-	boolean pinned;
-	Coordinate location;
-	Color color;
+	protected String name;
+	protected String letter;
+	protected boolean taken;
+	protected boolean pinned;
+	protected Coordinate location;
+	protected Color color;
 
 	public String getName() {
 		return name;
