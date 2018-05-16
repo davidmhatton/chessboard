@@ -1,6 +1,7 @@
 package chessboard.models.pieces;
 
 import chessboard.enums.Color;
+import chessboard.enums.Piece;
 import chessboard.services.helpers.Coordinate;
 
 /**
@@ -8,9 +9,9 @@ import chessboard.services.helpers.Coordinate;
  *
  * @author David Hatton
  */
-public class Rook extends Piece {
+public class Rook extends MasterPiece {
 
-	public Rook(String name, String letter, boolean taken, boolean pinned, Coordinate location, Color color) {
-		super(name, letter, taken, pinned, location, color);
+	public Rook(Coordinate location, Color color) {
+		super(Piece.ROOK.getName(), Piece.ROOK.getLetter(), false, false, location, color);
 	}
 }

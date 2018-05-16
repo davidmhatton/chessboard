@@ -1,15 +1,14 @@
 package chessboard.enums;
 
 /**
- * Names of pieces in the game.
- * Listed in value order.
+ * Description.
  *
- * @author David Hatton
+ * @author David Hatton (dhatton@turnitin.com)
  */
-public enum Pieces {
+public enum Piece {
 
 	/** Name/letter pairing for a king. High value is a placeholder rather than a reflection of game rules.*/
-	KING("King", "k", 100000),
+	KING("King", "k", -1),
 
 	/** Name/letter pairing for a queen. */
 	QUEEN("Queen", "q", 9),
@@ -31,7 +30,7 @@ public enum Pieces {
 	private String letter;
 	private int value;
 
-	Pieces(String name, String letter, int value) {
+	Piece(String name, String letter, int value) {
 		this.letter = letter;
 	}
 
@@ -42,6 +41,4 @@ public enum Pieces {
 	public String getName() {
 		return name;
 	}
-
-
 }

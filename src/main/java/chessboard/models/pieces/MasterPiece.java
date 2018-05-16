@@ -8,20 +8,20 @@ import chessboard.services.helpers.Coordinate;
  *
  * @author David Hatton
  */
-public class Piece {
+public class MasterPiece {
 
 	private String name;
 	private String letter;
 	private boolean taken;
 	private boolean pinned;
 	private Coordinate location;
-	private Coordinate defaultLocation;
 	private Color color;
 
-	public Piece() {
+	public MasterPiece() {
 	}
 
-	public Piece(String name, String letter, boolean taken, boolean pinned, Coordinate location, Color color) {
+	public MasterPiece(String name, String letter, boolean taken, boolean pinned,
+					   Coordinate location, Color color) {
 		this.name = name;
 		this.letter = letter;
 		this.taken = taken;
@@ -60,10 +60,6 @@ public class Piece {
 
 	public void setLocation(Coordinate location) {
 		this.location = location;
-	}
-
-	public Coordinate getDefaultLocation() {
-		return defaultLocation;
 	}
 
 	public Color getColor() {

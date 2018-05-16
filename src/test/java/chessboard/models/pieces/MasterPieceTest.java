@@ -12,10 +12,10 @@ import org.junit.runners.BlockJUnit4ClassRunner;
  * @author David Hatton
  */
 @RunWith(BlockJUnit4ClassRunner.class)
-public class PieceTest {
+public class MasterPieceTest {
 
 	@Test
 	public void beanTest() throws Exception {
-		JavaBeanTester.test(Piece.class);
+		JavaBeanTester.test(MasterPiece.class);
 	}
 }

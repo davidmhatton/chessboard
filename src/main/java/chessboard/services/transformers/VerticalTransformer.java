@@ -1,12 +1,9 @@
 package chessboard.services.transformers;
 
-import chessboard.enums.Color;
 import chessboard.enums.Direction;
 import chessboard.exceptions.NoPieceException;
 import chessboard.exceptions.OutOfBoundsException;
 import chessboard.exceptions.WrongDirectionException;
-import chessboard.models.pieces.Piece;
-import chessboard.models.places.Square;
 import chessboard.services.helpers.Coordinate;
 
 import org.springframework.stereotype.Service;

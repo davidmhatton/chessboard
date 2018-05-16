@@ -1,6 +1,6 @@
 package chessboard.exceptions;
 
-import chessboard.models.pieces.Piece;
+import chessboard.models.pieces.MasterPiece;
 import chessboard.models.places.Square;
 
 /**
@@ -13,22 +13,22 @@ public class NoPieceException extends NullPointerException {
 	private static final String DEFINITE_MESSAGE_TEMPLATE = "Expected to find a %s %s on square %d.";
 	private static final String INDEFINITE_MESSAGE_TEMPLATE = "Expected to find a piece on square %d";
 	private final Square targetSquare;
-	private final Piece expectedPiece;
+	private final MasterPiece expectedMasterPiece;
 
 	/**
 	 * For use when the identity of the missing piece is known.
 	 *
-	 * @param expectedPiece The piece that was expected
+	 * @param expectedMasterPiece The piece that was expected
 	 * @param targetSquare The square on which it was expected
 	 */
-	public NoPieceException(Piece expectedPiece, Square targetSquare) {
+	public NoPieceException(MasterPiece expectedMasterPiece, Square targetSquare) {
 		super(String.format(
 				DEFINITE_MESSAGE_TEMPLATE,
-				expectedPiece.getName(),
-				expectedPiece.getColor().getColor(),
+				expectedMasterPiece.getName(),
+				expectedMasterPiece.getColor().getColor(),
 				targetSquare.getId()
 		));
-		this.expectedPiece = expectedPiece;
+		this.expectedMasterPiece = expectedMasterPiece;
 		this.targetSquare = targetSquare;
 	}
 
@@ -41,11 +41,11 @@ public class NoPieceException extends NullPointerException {
 	public NoPieceException(Square targetSquare) {
 		super(String.format(INDEFINITE_MESSAGE_TEMPLATE, targetSquare.getId()));
 		this.targetSquare = targetSquare;
-		this.expectedPiece = null;
+		this.expectedMasterPiece = null;
 	}
 
-	public Piece getExpectedPiece() {
-		return expectedPiece;
+	public MasterPiece getExpectedMasterPiece() {
+		return expectedMasterPiece;
 	}
 
 	public Square getTargetSquare() {
