@@ -3,7 +3,7 @@ package chessboard.models.places;
 import java.util.ArrayList;
 import java.util.List;
 
-import chessboard.models.pieces.Piece;
+import chessboard.models.pieces.MasterPiece;
 
 /**
  * The board as a whole.
@@ -14,7 +14,7 @@ public class Board {
 	private List<Rank> ranks;
 	private List<File> files;
 	private List<Square> squares;
-	private List<Piece> pieces;
+	private List<MasterPiece> masterPieces;
 
 	public Board() {
 		this.squares = new ArrayList<>();
@@ -59,7 +59,7 @@ public class Board {
 		return squares;
 	}
 
-	public List<Piece> getPieces() {
-		return pieces;
+	public List<MasterPiece> getMasterPieces() {
+		return masterPieces;
 	}
 }

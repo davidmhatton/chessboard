@@ -1,32 +1,21 @@
 package chessboard.models.pieces;
 
 import chessboard.enums.Color;
+import chessboard.services.helpers.Coordinate;
 
 /**
  * Master piece.
  *
  * @author David Hatton
  */
-public class Piece {
+public abstract class MasterPiece {
 
-	private String name;
-	private String letter;
-	private boolean taken;
-	private boolean pinned;
-	private int location;
-	private Color color;
-
-	public Piece() {
-	}
-
-	public Piece(String name, String letter, boolean taken, boolean pinned, int location, Color color) {
-		this.name = name;
-		this.letter = letter;
-		this.taken = taken;
-		this.pinned = pinned;
-		this.location = location;
-		this.color = color;
-	}
+	protected String name;
+	protected String letter;
+	protected boolean taken;
+	protected boolean pinned;
+	protected Coordinate location;
+	protected Color color;
 
 	public String getName() {
 		return name;
@@ -52,11 +41,11 @@ public class Piece {
 		this.pinned = pinned;
 	}
 
-	public int getLocation() {
+	public Coordinate getLocation() {
 		return location;
 	}
 
-	public void setLocation(int location) {
+	public void setLocation(Coordinate location) {
 		this.location = location;
 	}
 

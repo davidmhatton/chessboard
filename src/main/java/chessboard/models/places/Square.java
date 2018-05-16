@@ -1,7 +1,7 @@
 package chessboard.models.places;
 
 import chessboard.enums.Color;
-import chessboard.models.pieces.Piece;
+import chessboard.models.pieces.MasterPiece;
 import chessboard.services.helpers.Coordinate;
 
 import static chessboard.services.helpers.IdTranslator.coordinateToId;
@@ -17,13 +17,13 @@ public class Square {
 	private Integer fileId;
 	private Integer rankId;
 	private Color color;
-	private Piece piece;
+	private MasterPiece masterPiece;
 
 	public Square(Coordinate coordinate) {
 		this.fileId = coordinate.getFileId();
 		this.rankId = coordinate.getRankId();
 		this.id = coordinateToId(coordinate);
-		this.piece = null;
+		this.masterPiece = null;
 		determineColor();
 	}
 
@@ -33,7 +33,7 @@ public class Square {
 		this.id = id;
 		this.fileId = coordinate.getFileId();
 		this.rankId = coordinate.getRankId();
-		this.piece = null;
+		this.masterPiece = null;
 		determineColor();
 	}
 
@@ -61,11 +61,11 @@ public class Square {
 		return color;
 	}
 
-	public Piece getPiece() {
-		return piece;
+	public MasterPiece getMasterPiece() {
+		return masterPiece;
 	}
 
-	public void setPiece(Piece piece) {
-		this.piece = piece;
+	public void setMasterPiece(MasterPiece masterPiece) {
+		this.masterPiece = masterPiece;
 	}
 }
