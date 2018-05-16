@@ -12,6 +12,11 @@ import chessboard.services.helpers.Coordinate;
 public class Rook extends MasterPiece {
 
 	public Rook(Coordinate location, Color color) {
-		super(Piece.ROOK.getName(), Piece.ROOK.getLetter(), false, false, location, color);
+		this.name = (Piece.ROOK.getName());
+		this.letter = (Piece.ROOK.getLetter());
+		this.taken = false;
+		this.pinned = false;
+		this.location = location;
+		this.color = color;
 	}
 }
