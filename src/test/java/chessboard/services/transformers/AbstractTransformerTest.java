@@ -14,7 +14,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * @author David Hatton
  */
 public class AbstractTransformerTest {
-
+// TODO as a temp line, make code better. haha! Find this winnie.
 	@Test
 	public void highSquareIsOutOfBounds() {
 		assertThat(squareOutOfBounds(65)).isTrue();
