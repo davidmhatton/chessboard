@@ -23,7 +23,7 @@ public class BishopTest {
 	}
 
 	@Test
-	public void rookConstructorSetsExpectedValues() {
+	public void bishopConstructorSetsExpectedValues() {
 		assertThat(testBishop.getName()).isEqualTo(Piece.BISHOP.getName());
 		assertThat(testBishop.getLetter()).isEqualTo(Piece.BISHOP.getLetter());
 		assertThat(testBishop.isTaken()).isFalse();
